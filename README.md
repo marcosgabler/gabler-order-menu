@@ -1,17 +1,3 @@
-=== Order Menu – Pages & Posts Sorter ===
-Contributors:      seunome
-Tags:              menu order, page order, post order, drag and drop, sort
-Requires at least: 5.8
-Tested up to:      6.6
-Requires PHP:      7.4
-Stable tag:        1.0.0
-License:           GPLv2 or later
-License URI:       https://www.gnu.org/licenses/gpl-2.0.html
-
-Reordene Páginas e Posts via arrastar-e-soltar no painel WordPress. A ordem é aplicada automaticamente no front-end.
-
-== Description ==
-
 **Order Menu** adiciona uma interface intuitiva de arrastar-e-soltar ao painel do WordPress, permitindo que você reordene facilmente Páginas e Posts (e outros tipos de post personalizados).
 
 **Recursos principais:**
