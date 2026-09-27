@@ -1,0 +1,622 @@
+/* ==========================================================================
+   Order Menu – Admin Styles
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ── CSS Custom Properties ─────────────────────────────────────────────── */
+:root {
+    --om-primary:       #6366f1;
+    --om-primary-dark:  #4f46e5;
+    --om-primary-light: #e0e7ff;
+    --om-accent:        #f59e0b;
+    --om-success:       #10b981;
+    --om-danger:        #ef4444;
+    --om-warning:       #f59e0b;
+
+    --om-bg:            #f8fafc;
+    --om-surface:       #ffffff;
+    --om-border:        #e2e8f0;
+    --om-border-hover:  #cbd5e1;
+
+    --om-text:          #1e293b;
+    --om-text-muted:    #64748b;
+    --om-text-light:    #94a3b8;
+
+    --om-radius:        12px;
+    --om-radius-sm:     8px;
+    --om-radius-xs:     4px;
+    --om-shadow:        0 1px 3px rgba(0,0,0,.07), 0 4px 16px rgba(0,0,0,.05);
+    --om-shadow-lg:     0 8px 32px rgba(99,102,241,.18);
+
+    --om-font:          'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    --om-transition:    all .2s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── Reset scope ────────────────────────────────────────────────────────── */
+.om-wrap * {
+    box-sizing: border-box;
+    font-family: var(--om-font);
+}
+
+.om-wrap {
+    max-width: 960px;
+    background: var(--om-bg);
+    padding: 0 0 40px;
+    margin: 20px 20px 0 2px;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+.om-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: linear-gradient(135deg, var(--om-primary) 0%, var(--om-primary-dark) 100%);
+    border-radius: var(--om-radius);
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    box-shadow: var(--om-shadow-lg);
+}
+
+.om-header__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    background: rgba(255,255,255,.15);
+    border-radius: var(--om-radius-sm);
+    backdrop-filter: blur(4px);
+    flex-shrink: 0;
+}
+
+.om-header__logo .dashicons {
+    font-size: 28px;
+    width: 28px;
+    height: 28px;
+    color: #fff;
+}
+
+.om-header__text {
+    flex: 1;
+}
+
+.om-header__title {
+    margin: 0 0 4px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+}
+
+.om-header__subtitle {
+    margin: 0;
+    font-size: 13px;
+    color: rgba(255,255,255,.8);
+    line-height: 1.4;
+}
+
+.om-header__subtitle strong {
+    color: #fff;
+}
+
+.om-header__actions {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────────────── */
+.om-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 18px;
+    border-radius: var(--om-radius-sm);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: var(--om-transition);
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.om-btn .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+}
+
+.om-btn--primary {
+    background: #fff;
+    color: var(--om-primary);
+    border-color: #fff;
+}
+
+.om-btn--primary:hover:not(:disabled) {
+    background: var(--om-primary-light);
+    color: var(--om-primary-dark);
+    border-color: var(--om-primary-light);
+    transform: translateY(-1px);
+}
+
+.om-btn--primary:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+.om-btn--ghost {
+    background: rgba(255,255,255,.1);
+    color: rgba(255,255,255,.9);
+    border-color: rgba(255,255,255,.25);
+}
+
+.om-btn--ghost:hover {
+    background: rgba(255,255,255,.2);
+    color: #fff;
+    border-color: rgba(255,255,255,.4);
+}
+
+/* ── Notice ─────────────────────────────────────────────────────────────── */
+.om-notice {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    border-radius: var(--om-radius-sm);
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    animation: om-slide-in .25s ease;
+}
+
+.om-notice[hidden] { display: none; }
+
+.om-notice--success {
+    background: #d1fae5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+}
+
+.om-notice--error {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+}
+
+.om-notice--saving {
+    background: var(--om-primary-light);
+    color: var(--om-primary-dark);
+    border: 1px solid #c7d2fe;
+}
+
+@keyframes om-slide-in {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Tabs ────────────────────────────────────────────────────────────────── */
+.om-tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 16px;
+    background: var(--om-surface);
+    padding: 6px;
+    border-radius: var(--om-radius);
+    border: 1px solid var(--om-border);
+    width: fit-content;
+}
+
+.om-tab {
+    padding: 8px 20px;
+    border-radius: var(--om-radius-sm);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--om-text-muted);
+    text-decoration: none;
+    transition: var(--om-transition);
+}
+
+.om-tab:hover {
+    background: var(--om-primary-light);
+    color: var(--om-primary);
+}
+
+.om-tab--active {
+    background: var(--om-primary);
+    color: #fff !important;
+    font-weight: 600;
+}
+
+/* ── Legend ──────────────────────────────────────────────────────────────── */
+.om-legend {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    font-size: 12px;
+    color: var(--om-text-muted);
+}
+
+.om-legend__item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.om-legend__item--hint {
+    margin-left: auto;
+    font-style: italic;
+}
+
+.om-legend__item--hint .dashicons {
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+    color: var(--om-primary);
+}
+
+/* ── Card ────────────────────────────────────────────────────────────────── */
+.om-card {
+    background: var(--om-surface);
+    border: 1px solid var(--om-border);
+    border-radius: var(--om-radius);
+    box-shadow: var(--om-shadow);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.om-card--settings {
+    padding: 24px;
+}
+
+/* ── Badges ──────────────────────────────────────────────────────────────── */
+.om-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 99px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+
+.om-badge--publish  { background: #d1fae5; color: #065f46; }
+.om-badge--draft    { background: #f1f5f9; color: #475569; }
+.om-badge--pending  { background: #fef3c7; color: #92400e; }
+.om-badge--private  { background: #ede9fe; color: #5b21b6; }
+
+/* Small badge (legend) */
+.om-legend .om-badge {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border-radius: 50%;
+}
+
+/* ── Empty state ─────────────────────────────────────────────────────────── */
+.om-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 64px 24px;
+    color: var(--om-text-light);
+    gap: 12px;
+}
+
+.om-empty .dashicons {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+}
+
+.om-empty p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* ── Sortable list ───────────────────────────────────────────────────────── */
+.om-sortable {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.om-sortable--root {
+    padding: 8px;
+}
+
+.om-sortable--nested {
+    margin: 0 0 0 44px;
+    padding: 4px 0 4px 16px;
+    border-left: 3px solid var(--om-border);
+}
+
+/* ── List item ───────────────────────────────────────────────────────────── */
+.om-item {
+    margin: 4px 0;
+    border-radius: var(--om-radius-sm);
+    transition: var(--om-transition);
+}
+
+.om-item__inner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    background: #fff;
+    border: 1px solid var(--om-border);
+    border-radius: var(--om-radius-sm);
+    transition: var(--om-transition);
+    cursor: default;
+}
+
+.om-item__inner:hover {
+    border-color: var(--om-primary);
+    box-shadow: 0 0 0 3px var(--om-primary-light);
+}
+
+/* Drag handle */
+.om-item__handle {
+    color: var(--om-text-light);
+    cursor: grab;
+    flex-shrink: 0;
+    transition: color .15s;
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    padding: 4px;
+}
+
+.om-item__handle:hover,
+.om-item__inner:hover .om-item__handle {
+    color: var(--om-primary);
+}
+
+.om-item__handle:active {
+    cursor: grabbing;
+}
+
+/* Thumbnail */
+.om-item__thumb {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--om-radius-xs);
+    overflow: hidden;
+    background: var(--om-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 1px solid var(--om-border);
+}
+
+.om-item__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.om-item__thumb .dashicons {
+    color: var(--om-text-light);
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+}
+
+/* Content */
+.om-item__content {
+    flex: 1;
+    min-width: 0;
+}
+
+.om-item__title {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--om-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 3px;
+}
+
+.om-item__meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.om-item__parent-label {
+    font-size: 11px;
+    color: var(--om-text-muted);
+}
+
+.om-item__order-num {
+    font-size: 11px;
+    color: var(--om-text-light);
+    margin-left: auto;
+}
+
+.om-order-val {
+    font-weight: 700;
+    color: var(--om-primary);
+}
+
+/* Actions */
+.om-item__actions {
+    display: flex;
+    gap: 4px;
+    opacity: 0;
+    transition: opacity .15s;
+    flex-shrink: 0;
+}
+
+.om-item__inner:hover .om-item__actions {
+    opacity: 1;
+}
+
+.om-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: var(--om-radius-xs);
+    color: var(--om-text-muted);
+    background: var(--om-bg);
+    border: 1px solid var(--om-border);
+    transition: var(--om-transition);
+    text-decoration: none;
+}
+
+.om-action-btn:hover {
+    background: var(--om-primary-light);
+    color: var(--om-primary);
+    border-color: var(--om-primary);
+}
+
+.om-action-btn .dashicons {
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+}
+
+/* ── Drag states ─────────────────────────────────────────────────────────── */
+.om-item--placeholder {
+    border: 2px dashed var(--om-primary) !important;
+    background: var(--om-primary-light) !important;
+    border-radius: var(--om-radius-sm);
+    height: 54px;
+}
+
+.om-item--dragging .om-item__inner {
+    box-shadow: var(--om-shadow-lg);
+    border-color: var(--om-primary);
+    background: #fff;
+    opacity: .92;
+    transform: rotate(1.5deg) scale(1.01);
+}
+
+/* ── Settings section ────────────────────────────────────────────────────── */
+.om-settings__title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--om-text);
+    margin: 0 0 16px;
+}
+
+.om-settings__title .dashicons {
+    color: var(--om-primary);
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+}
+
+.om-settings__hint {
+    margin: 8px 0 0;
+    font-size: 12px;
+    color: var(--om-text-muted);
+}
+
+/* ── Toggle switch ───────────────────────────────────────────────────────── */
+.om-toggle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.om-toggle__input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.om-toggle__track {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: 44px;
+    height: 24px;
+    background: var(--om-border);
+    border-radius: 99px;
+    transition: background .2s;
+    flex-shrink: 0;
+}
+
+.om-toggle__thumb {
+    position: absolute;
+    left: 3px;
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 1px 4px rgba(0,0,0,.2);
+    transition: transform .2s;
+}
+
+.om-toggle__input:checked + .om-toggle__track {
+    background: var(--om-primary);
+}
+
+.om-toggle__input:checked + .om-toggle__track .om-toggle__thumb {
+    transform: translateX(20px);
+}
+
+.om-toggle__label {
+    font-size: 13px;
+    color: var(--om-text);
+    line-height: 1.4;
+}
+
+.om-toggle__label strong {
+    color: var(--om-primary);
+}
+
+/* ── Spinner ─────────────────────────────────────────────────────────────── */
+@keyframes om-spin {
+    to { transform: rotate(360deg); }
+}
+
+.om-spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid currentColor;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: om-spin .7s linear infinite;
+    vertical-align: middle;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 782px) {
+    .om-header {
+        flex-wrap: wrap;
+    }
+
+    .om-header__actions {
+        width: 100%;
+    }
+
+    .om-btn {
+        flex: 1;
+        justify-content: center;
+    }
+
+    .om-sortable--nested {
+        margin-left: 24px;
+    }
+}
